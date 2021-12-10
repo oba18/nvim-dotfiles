@@ -1,0 +1,74 @@
+[[plugins]]                                    
+repo = 'Shougo/dein.vim'                                          
+
+# ------------------------------------                                    
+# colorscheme tender setting                                    
+# ------------------------------------
+# [[plugins]]
+# repo = 'altercation/vim-colors-solarized'                                    
+# hook_add = '''                                              
+# autocmd ColorScheme * highlight Normal ctermbg=none
+# autocmd ColorScheme * highlight LineNr ctermbg=none
+# colorscheme solarized
+# set background=dark
+# syntax enable
+# set t_Co=256                                            
+# let g:solarized_termcolors=256
+# '''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+build = '''
+git checkout release
+'''
+hook_add = '''
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+'''
+
+[[plugins]]
+repo = "Shougo/defx.nvim"
+depends = ["defx-git"]
+hook_add = """
+source ~/.config/nvim/plugins/defx.rc.vim
+"""
+
+[[plugins]]
+repo ="kristijanhusak/defx-git"
+
+[[plugins]]
+repo ="kristijanhusak/defx-icons"
+
+[[plugins]]
+repo ="ryanoasis/vim-devicons"
+hook_add = '''
+let g:defx_icons_column_length=2
+'''
+
+[[plugins]]
+repo = "rktjmp/lush.nvim"
+
+[[plugins]]
+repo = "ellisonleao/gruvbox.nvim"
+hook_add = '''                                              
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+colorscheme gruvbox
+set background=dark
+syntax enable
+set t_Co=256                                            
+let g:solarized_termcolors=256
+'''
